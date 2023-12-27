@@ -5,7 +5,7 @@ from .forms import LoginForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import UserEditingForm, ProfileEditingForm
-
+from posts.models import Post
 # Create your views here.
 
 def loginView(request):
@@ -30,7 +30,9 @@ def loginView(request):
 
 @login_required 
 def indexView(request):
-    return render(request,'users/index.html')
+    current_user = request.user
+    posts = Post.objects.filter(user=current_user)
+    return render(request,'users/index.html', {'posts': posts})
 
 def registerView(request):
     if request.method == 'POST':
