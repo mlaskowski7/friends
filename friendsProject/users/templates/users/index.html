@@ -1,10 +1,25 @@
 {% extends 'users/base.html' %}
 {% block content %}
-<h1>Your Posts</h1>
-{% for post in posts %}
-    <h2>{{post.title}}</h2>
-    <h3>{{post.user}}</h3>
-    <img src="{{post.image.url}}" alt="postImage">
-    <p>{{post.description}}</p>
-{% endfor %}
+<h1 class="text-3xl mb-10 text-white">Your Posts</h1>
+<div class="posts-container grid grid-cols-1">
+    {% for post in posts %}
+        <a href="#">
+            <div class="rounded overflow-hidden w-[470px] h-[auto] bg-white shadow-lg text-black">
+                <div class="user-container flex mx-5 my-5 text-wrap">
+                    <img class ="w-10 h-10 rounded-full" src="{{profile.photo.url}}" alt="profile_photo">
+                    <div class="text-black mx-2 my-2 font-bold">{{post.user}}</div>
+                </div>
+                <img src="{{post.image.url}}" alt="Post_image"> 
+                <div class="icons-container flex mx-5 my-5 text-black text-xl">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
 {% endblock %}
+
+<h2>{{post.title}}</h2>
+        <h3>{{post.user}}</h3>
+        <img src="{{post.image.url}}" alt="postImage">
+        <p>{{post.description}}</p>

@@ -1,10 +1,12 @@
 {% extends 'users/base.html' %}
 
 {% block content %}
-<form method="POST">
+<h1 class="text-2xl m-10">Log in to your account</h1>
+<form method="POST" class=" shadow-md m-10 w-2/5 rounded px-8 pt-6">
     {% csrf_token %}
     {{ form.as_p }}
-    <input class="submit-button" type="submit" value="Log in">
+    <input class="submit-button px-5 py-2" type="submit" value="Log in">
 </form>
 <p><div class="button"><a href="{% url 'password_reset' %}">Forgot your password?</a></div></p>
+<p><div class="button m-6"><a href="{% url 'register' %}">Register if you dont have an account</a></div></p>
 {% endblock %}

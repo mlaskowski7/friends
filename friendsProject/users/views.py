@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import UserEditingForm, ProfileEditingForm
 from posts.models import Post
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
 # Create your views here.
 
 def loginView(request):
@@ -28,11 +32,23 @@ def loginView(request):
 
     return render(request,'users/login.html',{'form':form})
 
+
+class CustomLogoutView(LogoutView):
+    template_name = 'users/logout.html'  
+
+    def dispatch(self, request, *args, **kwargs):
+        # Perform logout for GET requests
+        logout(request)
+
+        
+        return redirect('index') 
+
 @login_required 
 def indexView(request):
     current_user = request.user
     posts = Post.objects.filter(user=current_user)
-    return render(request,'users/index.html', {'posts': posts})
+    profile = Profile.objects.filter(user=current_user).first()
+    return render(request,'users/index.html', {'posts': posts,'profile':profile})
 
 def registerView(request):
     if request.method == 'POST':

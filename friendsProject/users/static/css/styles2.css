@@ -9,7 +9,6 @@ body{
 }
 
 nav{
-    background-color: rgba(255, 255, 255, 0.7);
     width: calc(100%-40px);
     position: sticky;
     top: 0;
@@ -23,7 +22,19 @@ nav{
 
 }
 
+.links-container a{
+    color: #645f96;
+}
 
+.links-container a:hover{
+    color: #fff;
+}
+
+nav .button{
+    width: 150px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
 .container{
     padding: 60px;
     border-radius: 10px;
@@ -39,6 +50,7 @@ nav{
 
 form{
     padding: 20px;
+    background-color: rgba(245, 245, 245, 0.514);
     text-align: center;
 }
 
@@ -48,7 +60,7 @@ form p{
 
 .button{
     padding: 10px;
-    background-color: #636fa4;
+    background-color: #645f96;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
@@ -64,7 +76,9 @@ form p{
 }
 
 .submit-button{
-    padding: 15px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 12px;
     background-color: #e8cbc0;
     border: none;
     border-radius: 10px;
@@ -84,3 +98,21 @@ a{
     text-decoration: none;
     color: white;
 }
+
+.icons-container i{
+    transition: all 0.3s ease;
+
+}
+
+
+.icons-container i:hover{
+    color: #e8cbc0;
+
+}
+
+.icons-container i:active{
+    transform: scale(1.2);
+
+}
+
+
