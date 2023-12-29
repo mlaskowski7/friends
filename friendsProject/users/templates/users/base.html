@@ -13,19 +13,19 @@
 <body>
     <nav class="shadow-md">
         <div class="logo-container">
-            <a href="{% url 'index' %}"><img class="h-8" src="{% static 'img/logo.png' %}" alt=""></a>
+            <a href="/posts/feed"><img class="h-8" src="{% static 'img/logo.png' %}" alt=""></a>
         </div>
 
         <div class="links-container space-x-1">
             <a class="py-4 px-2 font-semibold" href="/posts/create">Create new post</a>
-            <a class="py-4 px-2 font-semibold" href="/posts/feed">View Feed</a>
+            <a class="py-4 px-2 font-semibold" href="{% url 'index' %}">Your Posts</a>
             <a class="py-4 px-2 font-semibold" href="{% url 'edit' %}">Edit profile</a>
             <a class="py-4 px-2 font-semibold" href="{% url 'register' %}">Register new account</a>
             <a class="py-4 px-2 font-semibold" href="{% url 'password_change' %}">Change password</a>
         </div>
         
         {% if request.user.is_authenticated %}
-        <div class="button"><a href="{% url 'logout' %}">Log out</a></div>
+        <div class="button"><a href="{% url 'logout' %}">Log out ({{request.user.username}})</a></div>
         {% else %}
         <div class="button"><a href="{% url 'login' %}">Log in</a></div>
         {% endif %}

@@ -19,8 +19,8 @@
                         <i class="fa-solid fa-heart"></i>
                         {% endif %}
                     </a>
-                    <a><i class="fa-solid fa-comment"></i></a>
-                    <a><i class="fa-solid fa-share"></i></a>
+                    <a class="comment-btn" data-post-id="{{ post.id }}"><i class="fa-solid fa-comment"></i></a>
+                    
                 </div>
                 <div class="likes-count mx-6">
                     {% if post.liked_by.count < 1 %}
@@ -33,6 +33,29 @@
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">{{post.title}}</div>
                     <p class="text-gray-700 text-base">{{post.description}}</p>
+                </div>
+                <div class="comments-container hidden" id="comments{{ post.id }}">
+                    <div class="px-5 py-5">
+                        <h2 class="font-bold">Comments</h2>
+                        {% for comment in post.comments.all %}
+                        <b>{{ comment.posted_by }}: </b>{{ comment.body }}
+                        <br>
+                        {% endfor %}
+                    </div>
+                    <div class="px-5 py-5">
+                        <h1 class="text-2xl m-10">Write your comment</h1>
+                        <form method="post" class=" shadow-md m-10 w-4/5 rounded px-8 pt-6">
+                            {% csrf_token %}
+                            <div>
+                                {{comment_form.body}}
+                            </div>
+                            <div>
+                                <input type="hidden" name="post_id" id="post_id" value="{{ post.id }}">
+                                <input type="hidden" name="posted_by" id="posted_by" value="{{ logged_user }}">
+                            </div>
+                            <div><input class="submit-button px-5 py-2" type="submit" value="Send"></div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </a>
@@ -50,5 +73,11 @@
         });
         window.location.href="../../posts/feed/";
     });
+
+    $(document).on('click', '.comment-btn', function () {
+        let post_id = $(this).attr('data-post-id');
+        $("#comments" + post_id).toggleClass('hidden');
+    });
+
 </script>
 {% endblock %}
