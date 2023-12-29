@@ -7,7 +7,7 @@ Sample posts images are taken from unsplash.
 To run the severver - run undermentioned commands, while in project dir, then go to http://127.0.0.1:8000/users/ in your web browser.
 ```
 source virtual-env/Scripts/activate
-cd macroSite
+cd friendsProject
 python manage.py runserver
 ```
 superuser credentials: username-admin, password-superuser123
