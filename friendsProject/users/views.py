@@ -21,9 +21,9 @@ def loginView(request):
             user = authenticate(request,username=data['username'],password=data['password'])
             if user is not None:
                 login(request,user)
-                return HttpResponse("user authenticated and logged in")
+                return render(request, 'users/validLogin.html',{'user':user})
             else:
-                return HttpResponse("Invalid login")
+                return render(request, 'users/invalidLogin.html')
 
     else:
         form = LoginForm()

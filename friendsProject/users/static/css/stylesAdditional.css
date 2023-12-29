@@ -35,6 +35,7 @@ nav .button{
     width: 150px;
     margin-bottom: 2px;
     margin-top: 2px;
+    color: #fff;
 }
 .container{
     padding: 60px;
@@ -62,6 +63,7 @@ form p{
 .button{
     padding: 10px;
     background-color: #645f96;
+    color: #fff;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
@@ -96,6 +98,7 @@ form p{
 }
 
 a{
+
     text-decoration: none;
     
 }

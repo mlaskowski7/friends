@@ -1,4 +1,5 @@
 {% extends 'users/base.html' %}
+{% load mathfilters %}
 {% block content %}
 <h1 class="text-3xl mb-10 text-white">Feed</h1>
 <div class="posts-container grid grid-cols-1">
@@ -21,6 +22,14 @@
                     <a><i class="fa-solid fa-comment"></i></a>
                     <a><i class="fa-solid fa-share"></i></a>
                 </div>
+                <div class="likes-count mx-6">
+                    {% if post.liked_by.count < 1 %}
+                    {% elif post.liked_by.count == 1 %}
+                        <b>{{ post.liked_by.first }}</b><span> likes this</span>
+                    {% elif post.liked_by.count > 1 %}
+                        <b>{{ post.liked_by.first }}</b><span> and {{post.liked_by.count|sub:1}} others like this</span>
+                    {% endif %}
+                </div>
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">{{post.title}}</div>
                     <p class="text-gray-700 text-base">{{post.description}}</p>
@@ -39,6 +48,7 @@
             url:'/posts/like/',
             data:{post_id:post_id,csrfmiddlewaretoken:window.CSRF_TOKEN},
         });
+        window.location.href="../../posts/feed/";
     });
 </script>
 {% endblock %}

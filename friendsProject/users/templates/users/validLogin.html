@@ -1,0 +1,5 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<h1 class="text-2xl m-10">Welcome back {{user.first_name}}!</h1>
+<p><div class="button"><a href="{% url 'index' %}">Go to main page</a></div></p>
+{% endblock %}
