@@ -4,12 +4,13 @@ from django.utils.text import slugify
 
 # Create your models here.
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts_created')
     image = models.ImageField(upload_to='postImgs/%y/%m/%d')
     description = models.TextField(blank=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
     created = models.DateField(auto_now_add=True)
+    liked_by = models.ManyToManyField(settings.AUTH_USER_MODEL,related_name='posts_liked',blank=True)
 
     def __str__(self):
         return self.title

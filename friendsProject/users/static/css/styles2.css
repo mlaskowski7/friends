@@ -97,14 +97,16 @@ form p{
 
 a{
     text-decoration: none;
-    color: white;
+    
 }
 
 .icons-container i{
     
+    cursor: pointer;
     transition: all 0.3s ease;
 
 }
+
 
 
 .icons-container i:hover{
@@ -116,5 +118,4 @@ a{
     transform: scale(1.2);
 
 }
-
 

@@ -1,9 +1,9 @@
 {% extends 'users/base.html' %}
 {% block content %}
-<h1 class="text-3xl mb-10 text-white">Your Posts</h1>
+<h1 class="text-3xl mb-10 text-white">Feed</h1>
 <div class="posts-container grid grid-cols-1">
     {% for post in posts %}
-        <a href="#">
+        <a href="">
             <div class="rounded overflow-hidden w-[auto] h-[auto] bg-white shadow-lg text-black m-5">
                 <div class="user-container flex mx-5 my-5 text-wrap">
                     <img class ="w-10 h-10 rounded-full" src="{{post.user.profile.photo.url}}" alt="profile_photo">
@@ -11,9 +11,15 @@
                 </div>
                 <img src="{{post.image.url}}" class="mx-auto" alt="Post_image"> 
                 <div class="icons-container flex gap-3 mx-5 my-5 text-black text-xl">
-                    <i class="fa-solid fa-heart"></i>
-                    <i class="fa-solid fa-comment"></i>
-                    <i class="fa-solid fa-share"></i>
+                    <a id="{{post.id}}" class="btn-like">
+                        {% if logged_user in post.liked_by.all %}
+                        <i class="fa-solid fa-heart" style="color: #e8cbc0 !important; " id="redHeart"></i>
+                        {% else %}
+                        <i class="fa-solid fa-heart"></i>
+                        {% endif %}
+                    </a>
+                    <a><i class="fa-solid fa-comment"></i></a>
+                    <a><i class="fa-solid fa-share"></i></a>
                 </div>
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-2">{{post.title}}</div>
@@ -23,4 +29,16 @@
         </a>
     {% endfor %}
 </div>
+
+<script type="text/javascript">
+    window.CSRF_TOKEN ="{{csrf_token}}"
+    $(document).on('click','.btn-like',function(){
+        let post_id = this.id;
+        $.ajax({
+            method:"POST",
+            url:'/posts/like/',
+            data:{post_id:post_id,csrfmiddlewaretoken:window.CSRF_TOKEN},
+        });
+    });
+</script>
 {% endblock %}
