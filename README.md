@@ -1,5 +1,5 @@
 # friends
-Friends is my fullstack social media web app, with user authorization, feed and like and comment functionalities.
+Friends is my fullstack social media web app, with user authorization, feed, like and comment functionalities.
 Backend created in python with django framework, integrated with SQLite database.
 Frontend created with help of Tailwind CSS, jQuery and AJAX.
 Sample posts images are taken from unsplash.
