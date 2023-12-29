@@ -16,8 +16,11 @@
         </div>
 
         <div class="links-container space-x-1">
-            <a class="py-4 px-2 font-semibold" href="">Portfolio website</a>
-            <a class="py-4 px-2 font-semibold" href="">Github Profile</a>
+            <a class="py-4 px-2 font-semibold" href="/posts/create">Create new post</a>
+            <a class="py-4 px-2 font-semibold" href="/posts/feed">View Feed</a>
+            <a class="py-4 px-2 font-semibold" href="{% url 'edit' %}">Edit profile</a>
+            <a class="py-4 px-2 font-semibold" href="{% url 'register' %}">Register new account</a>
+            <a class="py-4 px-2 font-semibold" href="{% url 'password_change' %}">Change password</a>
         </div>
         
         {% if request.user.is_authenticated %}
