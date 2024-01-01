@@ -8,9 +8,14 @@ body{
     
 }
 
+.bg-primary{
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+}
+
 nav{
+    
     width: calc(100%-40px);
-    position: sticky;
+    position: fixed;
     top: 0;
     height: 30px;
     padding: 20px;
