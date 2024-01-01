@@ -15,8 +15,11 @@ superuser credentials: username-admin, password-superuser123
 
 # Screenshots
 ### Feed View
-![image](https://github.com/mlaskowski7/friends/assets/144243838/c3c5e3cf-72f1-4ee8-9e0f-d4d884256f99)
-![image](https://github.com/mlaskowski7/friends/assets/144243838/ca609d9f-ce16-4d99-965e-ab32e03d7360)
+![image](https://github.com/mlaskowski7/friends/assets/144243838/93b58761-317e-4ef6-b8ea-b5f95e6e25cf)
+![image](https://github.com/mlaskowski7/friends/assets/144243838/d429bdfc-eb90-4630-b7ff-e96b579d6800)
+
+
+
 Comments shown:
 ![image](https://github.com/mlaskowski7/friends/assets/144243838/6c2408b2-bdb1-46b0-9632-ba6c6476086d)
 
